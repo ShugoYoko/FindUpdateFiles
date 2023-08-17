@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
+[assembly: InternalsVisibleTo("FindUpdateFiles.Tests")]
 
 namespace src
 {
@@ -13,21 +15,28 @@ namespace src
         private DateTime _startDate;
         private DateTime _endDate;
 
+        private const string _errEmpty= "Please check the file path.";
+        private const string _dateError = "Please check date format";
+
+
         public SearchPaths(string? targetPath, string? startDate, string? endDate)
         {
             _paths = new List<string>();
             if (targetPath == string.Empty)
             {
-                _paths.Add("Please check the file path.");
+                _paths.Add(_errEmpty);
             }
 
             if (!DateTime.TryParse(startDate, out _startDate)
                 || !DateTime.TryParse(endDate, out _endDate))
             {
-                _paths.Add("Please check date format");
+                _paths.Add(_dateError);
             }
 
-            _paths = Directory.GetFiles(targetPath, "*", SearchOption.AllDirectories).ToList();
+            if (Directory.Exists(targetPath))
+            {
+                _paths = Directory.GetFiles(targetPath, "*", SearchOption.AllDirectories).ToList();
+            }
 
         }
 
@@ -37,7 +46,14 @@ namespace src
             {
                 var updateTime = File.GetLastWriteTime(path);
                 if (_startDate <= updateTime && updateTime <= _endDate)
+                {
                     yield return path;
+                }
+                else if(path==_errEmpty||path== _dateError)
+                {
+                    yield return path;
+                }
+
             }
 
         }
