@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("FindUpdateFiles.Tests")]
 
-namespace src
+namespace FindUpdateFiles.Con
 {
     internal class SearchPaths
     {
