@@ -9,20 +9,3 @@
 2.Set the start date and time of the search period in Start date (yyyy/MM/dd).<br>
 3.Set the end date and time of the search period in End date (yyyy/MM/dd).<br>
 4.The path of the file updated from the start date to the end date/time is returned.<br>
-
-# Creation procedure(Memo)
-(1)CLI<br>
-1.cd target_folder<br>
-2.dotnet new sln<br>
-3.mkdir src<br>
-4.cd src
-5.dotnet new console <br>
-5.cd .. <br>
-6.dotnet sln add ./src/src.csproj<br>
-7.dotnet new xunit -o FindUpdateFiles.Tests<br>
-8.dotnet sln add ./FindUpdateFiles.Tests/FindUpdateFiles.Tests.csproj<br>
-9.dotnet add ./FindUpdateFiles.Tests/FindUpdateFiles.Tests.csproj reference ./src/src.csproj<br>
-
-(2)Visual Studio<br>
-1.git init by GUI<br>
-2.Coding<br>
