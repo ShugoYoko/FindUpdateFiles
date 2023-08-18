@@ -1,5 +1,5 @@
 ﻿
-namespace src
+namespace FindUpdateFiles.Con
 {
     internal class Program
     {
