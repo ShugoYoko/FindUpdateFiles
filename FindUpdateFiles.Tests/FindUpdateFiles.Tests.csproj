@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\src.csproj" />
+    <ProjectReference Include="..\FindUpdateFiles.Con\FindUpdateFiles.Con.csproj" />
   </ItemGroup>
 
 </Project>
